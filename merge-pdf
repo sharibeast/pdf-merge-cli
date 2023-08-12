@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Storing PDF filenames in the 'pdfs' variable:"
+pdfs=$(find . -maxdepth 1 -type f -name "*.pdf" -printf "./%f\n")
+
+echo "List of PDF files:"
+echo "$pdfs"
+
+# Run pdftk with the list of PDF filenames as arguments
+pdftk $pdfs cat output combined.pdf
