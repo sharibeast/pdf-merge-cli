@@ -1,10 +1,7 @@
 #!/bin/bash
-
-echo "Storing PDF filenames in the 'pdfs' variable:"
+# find files and only filter with .pdf file extension
 pdfs=$(find . -maxdepth 1 -type f -name "*.pdf" -printf "./%f\n")
-
-echo "List of PDF files:"
 echo "$pdfs"
 
-# Run pdftk with the list of PDF filenames as arguments
+# Run pdftk with the list of PDF filenames
 pdftk $pdfs cat output combined.pdf
